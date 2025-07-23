@@ -18,10 +18,10 @@ Trace:
 
 npm manifest: 
   {
-    "name": "health-care-backend",
+    "name": "Knowledgebase-Backend",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "https://github.com/ShariarNiaj05/health-care-backend.git",
+    "repository": "https://github.com/ShariarNiaj05/Knowledgebase-Backend.git",
     "author": "ShariarNiaj05 <shariarn85@gmail.com>",
     "license": "MIT",
     "scripts": {
