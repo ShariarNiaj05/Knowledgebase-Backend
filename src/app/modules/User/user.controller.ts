@@ -10,7 +10,7 @@ const createRegularUser = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: "Admin Created Successfully!",
+    message: "User Created Successfully!",
     data: result,
   });
 });
