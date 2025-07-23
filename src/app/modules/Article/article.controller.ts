@@ -5,7 +5,7 @@ import sendResponse from "../../../shared/sendResponse";
 import status from "http-status";
 import { ArticleService } from "./article.service";
 
-const createRegularUser = catchAsync(async (req: Request, res: Response) => {
+const createArticles = catchAsync(async (req: Request, res: Response) => {
   const result = await ArticleService.createArticle(req);
 
   sendResponse(res, {
@@ -17,5 +17,5 @@ const createRegularUser = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const ArticleController = {
-  createRegularUser,
+  createArticles,
 };
