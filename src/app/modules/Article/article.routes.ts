@@ -18,7 +18,7 @@ router.post(
 );
 
 router.delete(
-  "/article",
+  "/article/:id",
   auth(UserRole.RegularUser),
   ArticleController.deleteArticle
 );

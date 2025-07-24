@@ -52,7 +52,34 @@ const getUserArticles = async (user: IAuthUser) => {
 
   return articles;
 };
-const deleteArticle = async (user: IAuthUser) => {};
+const deleteArticle = async (user: IAuthUser, articleId: string) => {
+  // check if user exist
+
+  const userData = await prisma.user.findUniqueOrThrow({
+    where: {
+      email: user?.email,
+    },
+  });
+
+  //  Find the article
+  const article = await prisma.article.findUnique({
+    where: { id: articleId },
+  });
+
+  // Check if it exists and belongs to the user
+  if (!article || article.userId !== userData.id) {
+    throw new ApiError(
+      status.BAD_REQUEST,
+      "You are not allowed to delete this article"
+    );
+  }
+
+  const deleteArticle = await prisma.article.delete({
+    where: { id: articleId },
+  });
+
+  return deleteArticle;
+};
 
 export const ArticleService = {
   createArticle,

@@ -34,8 +34,9 @@ const getUserArticles = catchAsync(
 );
 const deleteArticle = catchAsync(
   async (req: Request & { user?: IAuthUser }, res: Response) => {
+    const articleId = req.params.id;
     const user = req.user as IAuthUser;
-    const result = await ArticleService.deleteArticle(user);
+    const result = await ArticleService.deleteArticle(user, articleId);
 
     sendResponse(res, {
       statusCode: status.OK,
