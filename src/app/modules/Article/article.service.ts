@@ -34,7 +34,9 @@ const createArticle = async (user: IAuthUser, payload: any) => {
 
   return newArticle;
 };
+const getUserArticles = async (user: IAuthUser) => {};
 
 export const ArticleService = {
   createArticle,
+  getUserArticles,
 };

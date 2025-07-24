@@ -11,5 +11,11 @@ router.post(
 
   ArticleController.createArticles
 );
+router.get(
+  "/article",
+  auth(UserRole.RegularUser),
+
+  ArticleController.getUserArticles
+);
 
 export const ArticleRoutes = router;

@@ -9,7 +9,7 @@ import { IAuthUser } from "../../interfaces/common";
 const createArticles = catchAsync(
   async (req: Request & { user?: IAuthUser }, res: Response) => {
     const user = req.user as IAuthUser;
-    const result = await ArticleService.createArticle(req.body);
+    const result = await ArticleService.createArticle(user, req.body);
 
     sendResponse(res, {
       statusCode: status.OK,
@@ -19,7 +19,21 @@ const createArticles = catchAsync(
     });
   }
 );
+const getUserArticles = catchAsync(
+  async (req: Request & { user?: IAuthUser }, res: Response) => {
+    const user = req.user as IAuthUser;
+    const result = await ArticleService.getUserArticles(user);
+
+    sendResponse(res, {
+      statusCode: status.OK,
+      success: true,
+      message: "Articles Retrieved Successfully!",
+      data: result,
+    });
+  }
+);
 
 export const ArticleController = {
   createArticles,
+  getUserArticles,
 };
