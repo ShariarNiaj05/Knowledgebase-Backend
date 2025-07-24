@@ -11,10 +11,11 @@ router.post(
   "/create-user",
   auth(UserRole.SUPER_ADMIN, UserRole.RegularUser),
   fileUploader.upload.single("file"),
-  (req: Request, res: Response, next: NextFunction) => {
-    // req.body = userValidation.createAdmin.parse(JSON.parse(req.body.data));
-    return userController.createRegularUser(req, res, next);
-  }
+  userController.createRegularUser
+  // (req: Request, res: Response, next: NextFunction) => {
+  //   // req.body = userValidation.createAdmin.parse(JSON.parse(req.body.data));
+  //   return userController.createRegularUser(req, res, next);
+  // }
 );
 
 export const userRoutes = router;

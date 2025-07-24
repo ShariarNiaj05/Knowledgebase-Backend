@@ -6,7 +6,7 @@ import status from "http-status";
 import { ArticleService } from "./article.service";
 
 const createArticles = catchAsync(async (req: Request, res: Response) => {
-  const result = await ArticleService.createArticle(req);
+  const result = await ArticleService.createArticle(req.body);
 
   sendResponse(res, {
     statusCode: status.OK,
