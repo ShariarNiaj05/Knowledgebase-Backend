@@ -34,7 +34,24 @@ const createArticle = async (user: IAuthUser, payload: any) => {
 
   return newArticle;
 };
-const getUserArticles = async (user: IAuthUser) => {};
+const getUserArticles = async (user: IAuthUser) => {
+  // check if user exist
+
+  const userData = await prisma.user.findUniqueOrThrow({
+    where: {
+      email: user?.email,
+    },
+  });
+
+  const articles = await prisma.article.findMany({
+    where: {
+      userId: userData.id,
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return articles;
+};
 
 export const ArticleService = {
   createArticle,
