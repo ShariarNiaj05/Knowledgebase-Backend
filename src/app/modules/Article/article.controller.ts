@@ -32,8 +32,22 @@ const getUserArticles = catchAsync(
     });
   }
 );
+const deleteArticle = catchAsync(
+  async (req: Request & { user?: IAuthUser }, res: Response) => {
+    const user = req.user as IAuthUser;
+    const result = await ArticleService.deleteArticle(user);
+
+    sendResponse(res, {
+      statusCode: status.OK,
+      success: true,
+      message: "Articles Deleted Successfully!",
+      data: result,
+    });
+  }
+);
 
 export const ArticleController = {
   createArticles,
   getUserArticles,
+  deleteArticle,
 };

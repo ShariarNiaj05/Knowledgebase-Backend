@@ -52,8 +52,10 @@ const getUserArticles = async (user: IAuthUser) => {
 
   return articles;
 };
+const deleteArticle = async (user: IAuthUser) => {};
 
 export const ArticleService = {
   createArticle,
   getUserArticles,
+  deleteArticle,
 };
